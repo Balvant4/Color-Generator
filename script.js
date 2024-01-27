@@ -11,14 +11,17 @@ const generate = () => {
 };
 
 let Interval;
-const callfunc = () => {
-  if (Interval) {
-    clearInterval(Interval);
-  } else {
+const startcolorgenerating = () => {
+  if (!Interval) {
     generate();
     Interval = setInterval(generate, 1000);
   }
 };
 
-startbtn.addEventListener("click", callfunc);
-stopbtn.addEventListener("click", callfunc);
+const stopcolorgenerating = () => {
+  clearInterval(Interval);
+  Interval = null;
+};
+
+startbtn.addEventListener("click", startcolorgenerating);
+stopbtn.addEventListener("click", stopcolorgenerating);
